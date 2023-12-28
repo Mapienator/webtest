@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <canvas class="myCanvas">
+        <script>
+            const canvas = document.querySelector('.myCanvas');
+            const width = canvas.width = window.innerWidth;
+            const height = canvas.height = window.innerHeight;
+            const ctx = canvas.getContext('2d');
+            //in pix els
+            ['(', '.;.', '.', '.;.', ')'].join(' ')
+            //Get witdh, take middle of that and get .
+            let x = 600;
+            let y = 600;
+            let times = 50;
+
+            let middle = x / 2;
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.moveTo((x / 2), 0);
+            ctx.lineTo(x, y);
+            ctx.lineTo(1, y);
+            ctx.lineTo((x / 2), 0);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo((x / 2), 0);
+            let min = 0
+            for (let i = 0; i < (y / times)+1; i++) {
+                console.log(i)
+                let xpos = getRandomInt(min,(i));
+                let ypos = (i*times);
+                min += (i*times);
+                console.log(xpos+(x / i)," - ",ypos," | ",min );
+                ctx.lineTo(xpos+(x / 2),ypos);
+                ctx.lineTo((x / i),ypos)
+                
+
+
+            }
+            ctx.stroke();
+
+
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+            }
+
+
+
+        </script>
+</body>
+
+</html>
